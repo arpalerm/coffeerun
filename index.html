@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>coffeerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"> <!--provides out-of-the-box responsive styling for your site or app-->
+  </head>
+
+  <body class="container"> <!--acts as a wrapper for all the content that needs to adapt to viewport size-->
+    <header>
+      <h1>CoffeeRun</h1>
+    </header>
+    <section> <!--section tags logically group other markup-->
+      <div class="panel panel-default">  <!--panel panel-default and panel-body are bootstrap classes that will trigger styles for you-->
+        <div class="panel-body">
+          <form data-coffee-order="form">
+            <div class="form-group">
+              <label for="coffeeOrder">Coffee Order</label> <!--when a label is linked to a form element, you can click the labels text on the page and it will make the linked form element active. You should always link your labels to their form elements-->
+              <input class="form-control" name="coffee" type="text" id="coffeeOrder" autofocus required pattern="[a-zA-Z\s]+"> <!--form-control defined by bootstrap. Provides layout and typography styling for form elements.
+                                                             The input is a single line text field, that when submitted the data will be sent to a server and the name attribute will be sent with that data.
+                                                             form data is.... name attribute:data user types as Key:Value
+                                                             autofocus lets the user be able to enter text in this box as soon as the page loads, instead of having to click. Autofocus does not need a value, it is boolean, when it is present it is true, when absent false
+                                                             pattern="[a-zA-Z\s]+" This is a regular expression is matches any character from the set consisting of lower case a-z, uppercase A-Z and whitespace characters /s repeated one or more times + It will use the browsers validation mechanisims to prompt the user to fill out the field to match the requested format-->
+
+            </div>
+            <div class="form-group">
+              <label for="emailInput">Email</label>
+              <input class="form-control" type="email" name="emailAddress" id="emailInput" value="" placeholder="dr@who.com" required> <!--required is a boolean attribute and is not assigned a value. This uses the browsers built in validation mechanisims to take effect, prompting the user to fill out the field-->
+                                                                                                                                       <!--***Why on pg 247 is it all of a sudden showing /> at the end of my input tag?-->
+            </div>
+
+            <div class="radio"> <!--these are the little radio circle buttons the user will select for their size drink.-->
+              <label>
+                <input type="radio" name="size" value="short"> <!--giving each radio button the same name="size" allows the user to make only one selection by telling the browser only one can be selected at a time.-->
+                Short
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="size" value="tall" checked> <!--giving this radio button the value of checked is the same as autofocus, when it's present the boolean value attributed to it is true, when absent false.-->
+                Tall
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="size" value="grande">
+                Grande
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="size" value="coffee-zilla">
+                Coffe-Zilla
+              </label>
+            </div>
+
+            <div class="form-group"> <!--dropdown menu for flavor shots-->
+              <label for="flavorShot">Flavor Shot</label>
+              <select id="flavorShot" class="form-control" name="flavor">
+                <option value="">None</option>  <!--each option element provides one of the possible values, select specifies the name. The first option is the default option-->
+                <option value="caramel">Caramel</option>
+          <!--  <option value="caramel" selected>Caramel</option> this would auto select this option to be displayed first and override the default of the first option being displayed  -->
+                <option value="almond">Almond</option>
+                <option value="mocha">Mocha</option>
+              </select>
+            </div>
+
+            <div class="form-group"> <!--creates a range slider so the user can choose caffeine strength between 0 & 100 without having to type in an exact value-->
+              <label for="strengthLevel">Caffeine Rating</label>
+              <input name="strength" id="strengthLevel" type="range" value="30">
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button> <!--makes a submit button using bootstraps css-->
+            <button type="reset" class="btn btn-default">Reset</button> <!--makes a reset button using bootstraps css-->
+      <!--  <input type="submit" value="Submit"> how you would normally make a submit button without bootstrap-->
+
+
+          </form>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Pending Orders:</h4>
+          <div data-coffee-order="checklist">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--needs script tags so the html knows where to look for its scripts!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/checklist.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/truck.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+  </body>
+
+</html>
