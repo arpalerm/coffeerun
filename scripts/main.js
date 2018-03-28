@@ -22,4 +22,5 @@
 
   formHandler.addInputHandler(Validation.isCompanyEmail); // checks to see if email inputed is company email
 
+  
 })(window);
